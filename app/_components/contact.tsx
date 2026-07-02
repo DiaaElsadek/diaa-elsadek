@@ -69,13 +69,13 @@ export default function Contact() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <MagneticButton
-            href="mailto:diaaelsadek@outlook.com"
+            href="mailto:diaaelsadek@icloud.com"
             variant="default"
             showArrow={true}
           >
             <span className="flex items-center gap-2">
               <Mail size={16} />
-              <span>diaaelsadek@outlook.com</span>
+              <span>diaaelsadek@icloud.com</span>
             </span>
           </MagneticButton>
 

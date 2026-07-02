@@ -11,6 +11,7 @@ import Vision from "./_components/vision";
 import Testimonials from "./_components/testimonials";
 import Contact from "./_components/contact";
 import Footer from "./_components/footer";
+import ScrollToTop from "./_components/scroll-to-top";
 
 export default function Home() {
   return (
@@ -26,10 +27,11 @@ export default function Home() {
         <TechEcosystem />
         <EngineeringPrinciples />
         <Vision />
-        <Testimonials />
         <Contact />
+        <Testimonials />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }

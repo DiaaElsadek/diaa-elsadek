@@ -61,10 +61,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
         >
           <Loader />
-          {/* <SmoothScroll /> */}
+          <SmoothScroll />
           {children}
         </ThemeProvider>
       </body>

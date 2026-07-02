@@ -25,7 +25,7 @@ export default function ThemeToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative w-9 h-9 flex items-center justify-center rounded-full bg-surface-raised border border-border/50 text-foreground hover:bg-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background group overflow-hidden"
+      className="relative w-9 h-9 cursor-pointer flex items-center justify-center rounded-full bg-surface-raised border border-border/50 text-foreground hover:bg-accent-hover transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background group overflow-hidden"
       aria-label="Toggle theme"
     >
       <div className="relative w-full h-full flex items-center justify-center">

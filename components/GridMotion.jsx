@@ -102,7 +102,7 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
                         />
                         <div className="flex flex-col text-left">
                           <span className="text-sm font-medium text-foreground">{content.name}</span>
-                          <span className="text-xs text-muted-foreground">{content.role} at {content.company}</span>
+                          <span className="text-xs text-muted-foreground">{content.role} {content.company === "" ? "" : `at ${content.company}`}</span>
                         </div>
                       </div>
 
