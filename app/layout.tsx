@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import SmoothScroll from "./_components/smooth-scroll";
 import Loader from "./_components/loader";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Diaa Elsadek — Full-Stack Software Engineer",
@@ -58,12 +49,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} dark`}
+      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
     >
       <head>
         <meta name="theme-color" content="#050505" />
       </head>
-      <body className="min-h-screen noise-overlay">
+      <body className={`${GeistSans.className} min-h-screen noise-overlay`}>
         <Loader />
         <SmoothScroll />
         {children}

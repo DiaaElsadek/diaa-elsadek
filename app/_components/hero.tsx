@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedText from "./animated-text";
 import MagneticButton from "./magnetic-button";
+import Aurora from "@/components/Aurora";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -25,12 +26,21 @@ export default function Hero() {
 
       {/* Subtle radial gradient */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-0"
         style={{
           background:
             "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,255,255,0.02) 0%, transparent 70%)",
         }}
       />
+      
+      {/* Interactive Aurora background layer */}
+      <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
+        <Aurora
+          colorStops={["#5227FF","#7cff67","#5227FF"]}
+          amplitude={2.8}
+          blend={0.5}
+        />
+      </div>
 
       <motion.div
         style={{ opacity, y }}
@@ -63,7 +73,7 @@ export default function Hero() {
         <AnimatedText
           text="Not Just Websites."
           as="h1"
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-gradient leading-[1.1] mt-1"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-foreground leading-[1.1] mt-1"
           delay={0.6}
           staggerChildren={0.015}
         />

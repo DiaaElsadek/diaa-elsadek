@@ -156,7 +156,7 @@ export default function UniStreamCaseStudy() {
                 }}
                 className="h-full"
               >
-                <TiltSpotlightCard className="p-6 h-full">
+                <TiltSpotlightCard className="p-6 h-full" glowColor="rgba(139, 92, 246, 0.05)">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="p-2 rounded-lg border border-border bg-accent group-hover:border-border-hover transition-colors duration-300">
                       <Icon size={16} className="text-muted" />

@@ -60,7 +60,7 @@ export default function SelectedWork() {
               }}
               className="group block"
             >
-              <TiltSpotlightCard className="p-8 md:p-10 h-full">
+              <TiltSpotlightCard className="p-8 md:p-10 h-full" glowColor="rgba(139, 92, 246, 0.05)">
                 <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-3">
