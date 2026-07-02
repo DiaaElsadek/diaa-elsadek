@@ -61,7 +61,7 @@ export default function UniStreamCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-base md:text-lg text-muted max-w-2xl"
+            className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl"
           >
             A university streaming and educational content platform built for
             modern learning environments.
@@ -107,7 +107,7 @@ export default function UniStreamCaseStudy() {
             <h3 className="text-sm font-mono text-muted-foreground tracking-widest uppercase mb-4">
               The Problem
             </h3>
-            <p className="text-base text-muted leading-[1.8]">
+            <p className="text-base text-muted-foreground leading-[1.8]">
               University students often struggle to access lecture recordings and
               educational content in a centralized, organized way. Scattered
               across Google Drive links, WhatsApp groups, and email threads —
@@ -123,7 +123,7 @@ export default function UniStreamCaseStudy() {
             <h3 className="text-sm font-mono text-muted-foreground tracking-widest uppercase mb-4">
               The Solution
             </h3>
-            <p className="text-base text-muted leading-[1.8]">
+            <p className="text-base text-muted-foreground leading-[1.8]">
               UniStream22 provides a single, well-organized platform for
               streaming and accessing educational content. Organized by course,
               semester, and instructor — with optimized streaming, search, and a

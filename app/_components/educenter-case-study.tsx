@@ -125,7 +125,7 @@ export default function EduCenterCaseStudy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-lg md:text-xl text-muted max-w-2xl"
+            className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl"
           >
             A SaaS platform that lets educators launch their own educational
             businesses — without writing a single line of code.
@@ -169,7 +169,7 @@ export default function EduCenterCaseStudy() {
               <h3 className="text-sm font-mono text-muted-foreground tracking-widest uppercase mb-4">
                 {section.title}
               </h3>
-              <p className="text-base md:text-lg text-muted leading-[1.8]">
+              <p className="text-base md:text-lg text-muted-foreground leading-[1.8]">
                 {section.content}
               </p>
             </motion.div>
@@ -207,7 +207,7 @@ export default function EduCenterCaseStudy() {
                   <TiltSpotlightCard className="p-6 md:p-8 h-full" glowColor="rgba(139, 92, 246, 0.05)">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="p-2 rounded-lg border border-border bg-accent group-hover:border-border-hover transition-colors duration-300">
-                        <Icon size={18} className="text-muted" />
+                        <Icon size={18} className="text-muted-foreground" />
                       </div>
                       <h4 className="text-base font-medium text-foreground">
                         {point.title}

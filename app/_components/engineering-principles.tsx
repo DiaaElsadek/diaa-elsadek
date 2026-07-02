@@ -90,7 +90,7 @@ export default function EngineeringPrinciples() {
                     <div className="p-2.5 rounded-lg border border-border bg-accent w-fit mb-5 transition-colors duration-300">
                       <Icon
                         size={18}
-                        className="text-muted group-hover:text-foreground transition-colors duration-300"
+                        className="text-muted-foreground group-hover:text-foreground transition-colors duration-300"
                       />
                     </div>
                     <h3 className="text-base font-medium text-foreground mb-2.5 tracking-tight flex items-center justify-between">

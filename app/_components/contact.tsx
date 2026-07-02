@@ -12,7 +12,7 @@ export default function Contact() {
       className="relative section-spacing border-t border-border overflow-hidden"
     >
       {/* FloatingLines interactive background */}
-      <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
+      <div className="absolute inset-0 z-0 opacity-20 dark:opacity-40 mix-blend-plus-lighter dark:mix-blend-screen pointer-events-none">
         <FloatingLines
           linesGradient={["#E945F5","#2F4BC0","#E945F5"]}
           animationSpeed={1.4}
@@ -55,7 +55,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-base md:text-lg text-muted max-w-lg mx-auto mb-10"
+          className="text-base md:text-lg text-muted-foreground max-w-lg mx-auto mb-10"
         >
           Open to opportunities where engineering depth meets product ambition.
           If you&apos;re building something that matters, I&apos;d like to hear about it.

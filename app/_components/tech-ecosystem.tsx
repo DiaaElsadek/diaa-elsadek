@@ -198,7 +198,7 @@ export default function TechEcosystem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-base md:text-lg text-muted max-w-2xl mb-14 -mt-8"
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-14 -mt-8"
         >
           Technologies are tools, not identities. These are the ones I reach for
           — chosen for specific problems, not hype cycles.

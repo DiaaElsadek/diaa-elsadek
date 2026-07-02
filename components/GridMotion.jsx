@@ -24,6 +24,12 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
       mouseXRef.current = e.clientX;
     };
 
+    const handleTouchMove = e => {
+      if (e.touches.length > 0) {
+        mouseXRef.current = e.touches[0].clientX;
+      }
+    };
+
     const updateMotion = () => {
       const maxMoveAmount = 300;
       const baseDuration = 0.8;
@@ -47,9 +53,11 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
     const removeAnimationLoop = gsap.ticker.add(updateMotion);
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
       removeAnimationLoop();
     };
   }, []);
@@ -89,17 +97,17 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
                         <img 
                           src={content.avatar} 
                           alt={content.name} 
-                          className="w-10 h-10 rounded-full border border-white/10" 
+                          className="w-10 h-10 rounded-full border border-border" 
                           loading="lazy"
                         />
                         <div className="flex flex-col text-left">
-                          <span className="text-sm font-medium text-white">{content.name}</span>
-                          <span className="text-xs text-white/50">{content.role} at {content.company}</span>
+                          <span className="text-sm font-medium text-foreground">{content.name}</span>
+                          <span className="text-xs text-muted-foreground">{content.role} at {content.company}</span>
                         </div>
                       </div>
 
                       {/* Middle: Review Text */}
-                      <div className="text-sm text-white/70 leading-relaxed text-left flex-grow mb-4 font-sans line-clamp-4">
+                      <div className="text-sm text-muted-foreground leading-relaxed text-left flex-grow mb-4 font-sans line-clamp-4">
                         "{content.review}"
                       </div>
 
@@ -109,13 +117,13 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
                           <Star 
                             key={i} 
                             size={14} 
-                            className={i < content.rating ? "text-amber-400 fill-amber-400" : "text-white/10"} 
+                            className={i < content.rating ? "text-amber-400 fill-amber-400" : "text-muted"} 
                           />
                         ))}
                       </div>
 
                       {/* Hover glow effect */}
-                      <div className="absolute inset-0 border border-white/5 rounded-xl group-hover:border-primary/50 transition-colors duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 border border-border/50 rounded-xl group-hover:border-primary/50 transition-colors duration-500 pointer-events-none" />
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl" />
                     </div>
                   </div>

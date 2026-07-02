@@ -29,7 +29,7 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,255,255,0.02) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 50% at 50% 40%, var(--glow) 0%, transparent 70%)",
         }}
       />
       
@@ -44,7 +44,7 @@ export default function Hero() {
 
       <motion.div
         style={{ opacity, y }}
-        className="relative z-10 section-container text-center max-w-4xl mx-auto px-6"
+        className="relative z-10 section-container text-center max-w-4xl mx-auto px-6 pt-20 md:pt-0"
       >
         {/* Status line */}
         <motion.div
@@ -57,7 +57,7 @@ export default function Hero() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/60" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
           </span>
-          <span className="font-mono text-xs text-muted tracking-widest uppercase">
+          <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">
             Available for work
           </span>
         </motion.div>
@@ -83,7 +83,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.1 }}
-          className="mt-8 text-base md:text-lg text-muted max-w-xl mx-auto leading-relaxed"
+          className="mt-8 text-base md:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed"
         >
           Diaa Elsadek — Full-Stack Software Engineer crafting scalable SaaS
           systems and modern web applications. Based in Egypt.

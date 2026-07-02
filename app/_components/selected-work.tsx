@@ -37,7 +37,7 @@ export default function SelectedWork() {
     <section id="work" className="relative section-spacing overflow-hidden">
       {/* Soft Purple Ambient Light */}
       <div
-        className="absolute inset-0 pointer-events-none z-0 opacity-25 mix-blend-screen"
+        className="absolute inset-0 pointer-events-none z-0 opacity-10 dark:opacity-25 mix-blend-plus-lighter dark:mix-blend-screen"
         style={{
           background:
             "radial-gradient(circle 700px at 50% 50%, rgba(139, 92, 246, 0.12) 0%, transparent 80%)",
@@ -68,13 +68,13 @@ export default function SelectedWork() {
                         {project.name}
                       </h3>
                       <motion.span
-                        className="text-muted group-hover:text-foreground transition-colors duration-300"
+                        className="text-muted-foreground group-hover:text-foreground transition-colors duration-300"
                         whileHover={{ x: 2, y: -2 }}
                       >
                         <ArrowUpRight size={18} />
                       </motion.span>
                     </div>
-                    <p className="text-muted text-sm md:text-base mb-4 max-w-lg">
+                    <p className="text-muted-foreground text-sm md:text-base mb-4 max-w-lg">
                       {project.tagline}
                     </p>
                     <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">

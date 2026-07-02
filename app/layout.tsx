@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import SmoothScroll from "./_components/smooth-scroll";
 import Loader from "./_components/loader";
+import { ThemeProvider } from "./_components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Diaa Elsadek — Full-Stack Software Engineer",
@@ -49,15 +50,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
     >
       <head>
         <meta name="theme-color" content="#050505" />
       </head>
       <body className={`${GeistSans.className} min-h-screen noise-overlay`}>
-        <Loader />
-        <SmoothScroll />
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Loader />
+          {/* <SmoothScroll /> */}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
