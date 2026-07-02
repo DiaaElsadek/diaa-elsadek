@@ -1,26 +1,182 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050505;
+  --foreground: #fafafa;
+  --muted: #888888;
+  --muted-foreground: #666666;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --accent: rgba(255, 255, 255, 0.04);
+  --accent-hover: rgba(255, 255, 255, 0.08);
+  --surface: #0a0a0a;
+  --surface-raised: #111111;
+  --glow: rgba(255, 255, 255, 0.03);
+
+  --content-width: 1100px;
+  --content-narrow: 720px;
+  --section-gap: 160px;
+  --section-gap-mobile: 96px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Selection ───────────────────────────────────── */
+
+::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* ─── Scrollbar ───────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Typography ──────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+p {
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875em;
+  background: var(--accent);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* ─── Section Layout ──────────────────────────────── */
+
+.section-container {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-narrow {
+  max-width: var(--content-narrow);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-spacing {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+@media (max-width: 768px) {
+  .section-spacing {
+    padding-top: var(--section-gap-mobile);
+    padding-bottom: var(--section-gap-mobile);
+  }
+
+  .section-container,
+  .section-narrow {
+    padding: 0 20px;
+  }
+}
+
+/* ─── Utility ─────────────────────────────────────── */
+
+.text-gradient {
+  background: linear-gradient(to bottom, #fafafa, #888888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-subtle {
+  border: 1px solid var(--border);
+}
+
+.border-subtle-hover {
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.border-subtle-hover:hover {
+  border-color: var(--border-hover);
+}
+
+/* ─── Noise Texture Overlay ───────────────────────── */
+
+.noise-overlay::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ─── Dot Grid Background ─────────────────────────── */
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ─── Focus styles ────────────────────────────────── */
+
+:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
