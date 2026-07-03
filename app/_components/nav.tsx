@@ -82,6 +82,7 @@ export default function Nav() {
           opacity: isHidden ? 0 : 1 
         }}
         transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+        style={{ willChange: "transform, opacity" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           hasScrolled
             ? "bg-background/70 backdrop-blur-xl border-b border-border shadow-sm"

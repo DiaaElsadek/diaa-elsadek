@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Star } from 'lucide-react';
 import './GridMotion.css';
@@ -17,6 +17,23 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
     combinedItems = Array.from({ length: totalItems }, (_, index) => items[index % items.length]);
   }
 
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     gsap.ticker.lagSmoothing(0);
 
@@ -31,6 +48,8 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
     };
 
     const updateMotion = () => {
+      if (!isVisible) return; // Skip GSAP calculations when off-screen
+      
       const maxMoveAmount = 300;
       const baseDuration = 0.8;
       const inertiaFactors = [0.6, 0.4, 0.3, 0.2];
@@ -60,7 +79,7 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
       window.removeEventListener('touchmove', handleTouchMove);
       removeAnimationLoop();
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div className="noscroll loading" ref={gridRef}>

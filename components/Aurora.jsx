@@ -1,5 +1,5 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import './Aurora.css';
 
@@ -116,6 +116,23 @@ export default function Aurora(props) {
 
   const ctnDom = useRef(null);
 
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const ctn = ctnDom.current;
+    if (!ctn) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(ctn);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const ctn = ctnDom.current;
     if (!ctn) return;
@@ -172,6 +189,8 @@ export default function Aurora(props) {
     let animateId = 0;
     const update = t => {
       animateId = requestAnimationFrame(update);
+      if (!isVisible) return; // Skip rendering and calculations if not visible
+      
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       program.uniforms.uTime.value = time * speed * 0.1;
       program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
@@ -196,7 +215,7 @@ export default function Aurora(props) {
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude]);
+  }, [amplitude, isVisible]);
 
   return <div ref={ctnDom} className="aurora-container" />;
 }

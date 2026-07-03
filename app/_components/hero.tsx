@@ -44,7 +44,7 @@ export default function Hero() {
       </div>
 
       <motion.div
-        style={{ opacity, y }}
+        style={{ opacity, y, willChange: "transform, opacity" }}
         className="relative z-10 section-container text-center max-w-4xl mx-auto px-6 pt-20 md:pt-0"
       >
         {/* Status line */}
