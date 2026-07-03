@@ -174,7 +174,7 @@ export default function DeveloperIdentity() {
         rules: [
           { token: '', background: '050505' },
           { token: 'comment', foreground: '6b7280', fontStyle: 'italic' },
-          { token: 'keyword', foreground: '3B82F6' },
+          { token: 'keyword', foreground: '6366F1' },
           { token: 'string', foreground: '10B981' },
           { token: 'number', foreground: '8B5CF6' },
           { token: 'type', foreground: '06B6D4' },
@@ -182,10 +182,10 @@ export default function DeveloperIdentity() {
         colors: {
           'editor.background': '#05050500', 
           'editor.lineHighlightBackground': '#ffffff0a',
-          'editorCursor.foreground': '#3B82F6',
+          'editorCursor.foreground': '#6366F1',
           'editorLineNumber.foreground': '#4b5563',
           'editorIndentGuide.background': '#ffffff10',
-          'editor.selectionBackground': '#3B82F640',
+          'editor.selectionBackground': '#6366F140',
         }
       });
       monaco.editor.defineTheme('premium-light', {
@@ -194,7 +194,7 @@ export default function DeveloperIdentity() {
         rules: [
           { token: '', background: 'ffffff' },
           { token: 'comment', foreground: '94a3b8', fontStyle: 'italic' },
-          { token: 'keyword', foreground: '2563eb' },
+          { token: 'keyword', foreground: '4F46E5' },
           { token: 'string', foreground: '059669' },
           { token: 'number', foreground: '7c3aed' },
           { token: 'type', foreground: '0891b2' },
@@ -202,10 +202,10 @@ export default function DeveloperIdentity() {
         colors: {
           'editor.background': '#ffffff00',
           'editor.lineHighlightBackground': '#00000008',
-          'editorCursor.foreground': '#2563eb',
+          'editorCursor.foreground': '#4F46E5',
           'editorLineNumber.foreground': '#94a3b8',
           'editorIndentGuide.background': '#00000010',
-          'editor.selectionBackground': '#2563eb30',
+          'editor.selectionBackground': '#4F46E530',
         }
       });
       monaco.editor.setTheme(resolvedTheme === 'dark' ? 'premium-dark' : 'premium-light');
@@ -218,24 +218,12 @@ export default function DeveloperIdentity() {
         
         {/* Header */}
         <div className="text-center mb-16 relative z-10">
-          <motion.span
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="block font-mono text-xs text-muted-foreground tracking-widest uppercase mb-4"
-          >
+          <span className="block font-mono text-xs text-muted-foreground tracking-widest uppercase mb-4">
             00
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground"
-          >
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-foreground">
             Developer Identity
-          </motion.h2>
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
@@ -288,7 +276,7 @@ export default function DeveloperIdentity() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex flex-col rounded-2xl border border-border bg-card/80 backdrop-blur-xl shadow-2xl overflow-hidden min-h-[500px]"
+            className="flex flex-col rounded-2xl border border-border bg-card shadow-2xl overflow-hidden min-h-[500px]"
           >
             {/* MacOS style header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/50">
@@ -350,7 +338,7 @@ export default function DeveloperIdentity() {
                 }}
               />
               {/* Subtle ambient glow behind the editor */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#3B82F6]/5 to-[#8B5CF6]/5 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
             </div>
 
           </motion.div>

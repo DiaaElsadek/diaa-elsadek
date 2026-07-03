@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import {
   Layers,
   Globe,
@@ -70,32 +67,18 @@ export default function SystemDesign() {
       <div className="section-container">
         <SectionHeader number="02" title="Systems, Scale & Architecture" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-base md:text-lg text-muted max-w-2xl mb-14 -mt-8"
-        >
+        <p className="text-base md:text-lg text-muted max-w-2xl mb-14 -mt-8">
           The engineering decisions behind building scalable, maintainable
           systems. Every architectural choice is a tradeoff — these are the ones
           I&apos;ve navigated.
-        </motion.p>
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {SYSTEMS.map((system, index) => {
             const Icon = system.icon;
             return (
-              <motion.div
+              <div
                 key={system.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.06,
-                  ease: [0.25, 0.4, 0.25, 1],
-                }}
                 className="group relative rounded-xl border border-border bg-surface/50 p-5 transition-all duration-300 hover:border-border-hover hover:bg-surface"
               >
                 {/* Hover glow */}
@@ -106,7 +89,7 @@ export default function SystemDesign() {
                 />
                 <div className="relative z-10">
                   <div className="p-2 rounded-lg border border-border bg-accent w-fit mb-4 group-hover:border-border-hover transition-colors duration-300">
-                    <Icon size={16} className="text-muted" />
+                    <Icon size={16} className="text-muted group-hover:text-primary transition-colors duration-300" />
                   </div>
                   <h3 className="text-sm font-medium text-foreground mb-2">
                     {system.title}
@@ -115,7 +98,7 @@ export default function SystemDesign() {
                     {system.description}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

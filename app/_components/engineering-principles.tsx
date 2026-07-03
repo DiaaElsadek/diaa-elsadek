@@ -72,16 +72,8 @@ export default function EngineeringPrinciples() {
             const isExpanded = expandedIndex === index;
 
             return (
-              <motion.div
+              <div
                 key={principle.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-5%" }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.08,
-                  ease: [0.25, 0.4, 0.25, 1],
-                }}
                 className="h-full cursor-pointer"
                 onClick={() => setExpandedIndex(isExpanded ? null : index)}
               >
@@ -90,7 +82,7 @@ export default function EngineeringPrinciples() {
                     <div className="p-2.5 rounded-lg border border-border bg-accent w-fit mb-5 transition-colors duration-300">
                       <Icon
                         size={18}
-                        className="text-muted-foreground group-hover:text-foreground transition-colors duration-300"
+                        className="text-muted-foreground group-hover:text-primary transition-colors duration-300"
                       />
                     </div>
                     <h3 className="text-base font-medium text-foreground mb-2.5 tracking-tight flex items-center justify-between">
@@ -121,7 +113,7 @@ export default function EngineeringPrinciples() {
                     )}
                   </AnimatePresence>
                 </TiltSpotlightCard>
-              </motion.div>
+              </div>
             );
           })}
         </div>

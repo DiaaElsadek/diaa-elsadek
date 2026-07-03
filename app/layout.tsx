@@ -56,7 +56,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#050505" />
       </head>
-      <body className={`${GeistSans.className} min-h-screen noise-overlay`}>
+      <body className={`${GeistSans.className} min-h-screen bg-background`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

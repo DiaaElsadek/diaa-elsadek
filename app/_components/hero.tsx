@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Interactive Aurora background layer */}
       <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
         <Aurora
-          colorStops={["#5227FF","#7cff67","#5227FF"]}
+          colorStops={["#4F46E5", "#818CF8", "#3730A3"]}
           amplitude={2.8}
           blend={0.5}
         />

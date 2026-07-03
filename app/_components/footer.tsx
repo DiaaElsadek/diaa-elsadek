@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Mail, ArrowUpRight } from "lucide-react";
 
 function GithubIcon({ className, size }: { className?: string, size?: number }) {
@@ -102,20 +99,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border/50"
-        >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border/50">
           <span className="font-mono text-xs text-muted-foreground">
             © {new Date().getFullYear()} Diaa Elsadek. All rights reserved.
           </span>
           <span className="text-xs text-muted-foreground flex items-center gap-1.5">
             Crafted with intention in Egypt
           </span>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

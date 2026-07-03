@@ -193,32 +193,17 @@ export default function TechEcosystem() {
       <div className="section-container">
         <SectionHeader number="03" title="Technology Ecosystem" />
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-base md:text-lg text-muted-foreground max-w-2xl mb-14 -mt-8"
-        >
+        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-14 -mt-8">
           Technologies are tools, not identities. These are the ones I reach for
           — chosen for specific problems, not hype cycles.
-        </motion.p>
+        </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           
           {/* Tag Grid Column */}
           <div className="lg:col-span-2 space-y-10">
             {ECOSYSTEM.map((category, catIndex) => (
-              <motion.div
-                key={category.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.5,
-                  delay: catIndex * 0.08,
-                }}
-              >
+              <div key={category.label}>
                 <h3 className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4">
                   {category.label}
                 </h3>
@@ -226,22 +211,14 @@ export default function TechEcosystem() {
                   {category.items.map((item, itemIndex) => {
                     const isSelected = selectedTech === item.name;
                     return (
-                      <motion.div
+                      <div
                         key={`${category.label}-${item.name}`}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 0.3,
-                          delay: catIndex * 0.05 + itemIndex * 0.03,
-                        }}
-                        whileHover={{ scale: 1.03, y: -2 }}
                         onClick={() => {
                           if (TECH_META[item.name]) {
                             setSelectedTech(item.name);
                           }
                         }}
-                        className={`group flex flex-col gap-1 rounded-lg border px-4 py-3 cursor-pointer select-none transition-all duration-300 ${
+                        className={`group flex flex-col gap-1 rounded-lg border px-4 py-3 cursor-pointer select-none transition-all duration-300 hover:-translate-y-[2px] ${
                           isSelected
                             ? "border-foreground bg-accent text-foreground shadow-md"
                             : "border-border bg-surface/50 hover:border-border-hover hover:bg-surface text-muted-foreground hover:text-foreground"
@@ -253,11 +230,11 @@ export default function TechEcosystem() {
                         <span className="text-[11px] font-mono opacity-80">
                           {item.note}
                         </span>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
