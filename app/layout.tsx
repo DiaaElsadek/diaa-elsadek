@@ -7,34 +7,44 @@ import Loader from "./_components/loader";
 import { ThemeProvider } from "./_components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Diaa Elsadek — Full-Stack Software Engineer",
+  metadataBase: new URL("https://diaaelsadek.me"),
+  title: "Diaa Elsadek — Full-Stack Developer | React, Next.js, ASP.NET Core",
   description:
-    "Product-minded engineer building scalable SaaS systems, modern web applications, and educational technology platforms. Based in Egypt.",
+    "Full-Stack Developer specializing in JavaScript/TypeScript and .NET: React, Next.js, ASP.NET Core, SQL Server, and MongoDB. Architecting production SaaS, healthcare marketplaces, and booking platforms. Based in Egypt.",
   keywords: [
     "Diaa Elsadek",
-    "Full-Stack Engineer",
+    "Full-Stack Developer",
     "Software Engineer",
-    "SaaS",
-    "Next.js",
     "React",
+    "Next.js",
+    "ASP.NET Core",
+    "C#",
+    "TypeScript",
     "Node.js",
+    "SQL Server",
+    "MongoDB",
     "EduCenter",
+    "Al-Anis",
+    "Z-Sports",
+    "Multi-Tenant SaaS",
+    "Healthcare Marketplace",
   ],
-  authors: [{ name: "Diaa Elsadek" }],
+  authors: [{ name: "Diaa Elsadek", url: "https://diaaelsadek.me" }],
   creator: "Diaa Elsadek",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Diaa Elsadek — Full-Stack Software Engineer",
+    title: "Diaa Elsadek — Full-Stack Developer | React, Next.js, ASP.NET Core",
     description:
-      "Product-minded engineer building scalable SaaS systems and educational technology platforms.",
-    siteName: "Diaa Elsadek",
+      "Full-Stack Developer specializing in JavaScript/TypeScript and .NET: React, Next.js, ASP.NET Core, SQL Server, and MongoDB. Owning production products end to end.",
+    siteName: "Diaa Elsadek Portfolio",
+    url: "https://diaaelsadek.me",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Diaa Elsadek — Full-Stack Software Engineer",
+    title: "Diaa Elsadek — Full-Stack Developer | React, Next.js, ASP.NET Core",
     description:
-      "Product-minded engineer building scalable SaaS systems and educational technology platforms.",
+      "Full-Stack Developer specializing in JavaScript/TypeScript and .NET: React, Next.js, ASP.NET Core, SQL Server, and MongoDB.",
   },
   robots: {
     index: true,

@@ -1,5 +1,5 @@
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import './Aurora.css';
 
@@ -110,13 +110,12 @@ void main() {
 `;
 
 export default function Aurora(props) {
-  const { colorStops = ['#5227FF', '#7cff67', '#5227FF'], amplitude = 1.0, blend = 0.5 } = props;
+  const { colorStops = ['#4F46E5', '#818CF8', '#06B6D4'], amplitude = 1.0, blend = 0.5 } = props;
   const propsRef = useRef(props);
   propsRef.current = props;
 
   const ctnDom = useRef(null);
-
-  const [isVisible, setIsVisible] = useState(true);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     const ctn = ctnDom.current;
@@ -124,7 +123,7 @@ export default function Aurora(props) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        isVisibleRef.current = entry.isIntersecting;
       },
       { threshold: 0 }
     );
@@ -137,10 +136,12 @@ export default function Aurora(props) {
     const ctn = ctnDom.current;
     if (!ctn) return;
 
+    // Allocate WebGL renderer once
     const renderer = new Renderer({
       alpha: true,
       premultipliedAlpha: true,
-      antialias: true
+      antialias: false, // Performance win: disable antialiasing for blurred aurora
+      dpr: Math.min(window.devicePixelRatio || 1, 1.5), // Cap DPR at 1.5 to save GPU fill rate
     });
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
@@ -187,26 +188,27 @@ export default function Aurora(props) {
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
+    let isRunning = true;
+
     const update = t => {
+      if (!isRunning) return;
       animateId = requestAnimationFrame(update);
-      if (!isVisible) return; // Skip rendering and calculations if not visible
+      
+      // Zero computation when out of viewport
+      if (!isVisibleRef.current) return;
       
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       program.uniforms.uTime.value = time * speed * 0.1;
       program.uniforms.uAmplitude.value = propsRef.current.amplitude ?? 1.0;
       program.uniforms.uBlend.value = propsRef.current.blend ?? blend;
-      const stops = propsRef.current.colorStops ?? colorStops;
-      program.uniforms.uColorStops.value = stops.map(hex => {
-        const c = new Color(hex);
-        return [c.r, c.g, c.b];
-      });
       renderer.render({ scene: mesh });
     };
-    animateId = requestAnimationFrame(update);
 
+    animateId = requestAnimationFrame(update);
     resize();
 
     return () => {
+      isRunning = false;
       cancelAnimationFrame(animateId);
       window.removeEventListener('resize', resize);
       if (ctn && gl.canvas.parentNode === ctn) {
@@ -214,8 +216,7 @@ export default function Aurora(props) {
       }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude, isVisible]);
+  }, [amplitude, blend, colorStops]);
 
   return <div ref={ctnDom} className="aurora-container" />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useRef, useCallback, useEffect, useState } from "react";
 
 interface TiltSpotlightCardProps {
   children: React.ReactNode;
@@ -15,6 +15,13 @@ export default function TiltSpotlightCard({
   glowColor = "rgba(255, 255, 255, 0.04)",
 }: TiltSpotlightCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
+  const [canHover, setCanHover] = useState(false);
+
+  useEffect(() => {
+    // Only enable 3D tilt on devices that support hover (prevents CPU overhead on mobile/touch)
+    setCanHover(window.matchMedia("(hover: hover)").matches);
+  }, []);
 
   // Mouse absolute offsets relative to card boundaries
   const mouseX = useMotionValue(0);
@@ -25,16 +32,30 @@ export default function TiltSpotlightCard({
   const rotateYVal = useMotionValue(0);
 
   // Springs for smooth fluid micro-animations
-  const springX = useSpring(mouseX, { stiffness: 200, damping: 25 });
-  const springY = useSpring(mouseY, { stiffness: 200, damping: 25 });
-  const rotateX = useSpring(rotateXVal, { stiffness: 150, damping: 22 });
-  const rotateY = useSpring(rotateYVal, { stiffness: 150, damping: 22 });
+  const springX = useSpring(mouseX, { stiffness: 220, damping: 28 });
+  const springY = useSpring(mouseY, { stiffness: 220, damping: 28 });
+  const rotateX = useSpring(rotateXVal, { stiffness: 180, damping: 24 });
+  const rotateY = useSpring(rotateYVal, { stiffness: 180, damping: 24 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = useCallback(() => {
+    if (!canHover) return;
     const card = cardRef.current;
-    if (!card) return;
+    if (card) {
+      rectRef.current = card.getBoundingClientRect();
+    }
+  }, [canHover]);
 
-    const rect = card.getBoundingClientRect();
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!canHover) return;
+    
+    // Use cached rect to prevent layout thrashing on every mousemove
+    let rect = rectRef.current;
+    if (!rect && cardRef.current) {
+      rect = cardRef.current.getBoundingClientRect();
+      rectRef.current = rect;
+    }
+    if (!rect) return;
+
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
@@ -43,21 +64,22 @@ export default function TiltSpotlightCard({
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const maxTilt = 8; // Max tilt rotation in degrees
+    const maxTilt = 7; // Max tilt rotation in degrees
 
     const rotY = ((x - centerX) / centerX) * maxTilt;
     const rotX = -((y - centerY) / centerY) * maxTilt;
 
     rotateXVal.set(rotX);
     rotateYVal.set(rotY);
-  };
+  }, [canHover, mouseX, mouseY, rotateXVal, rotateYVal]);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
+    rectRef.current = null;
     mouseX.set(0);
     mouseY.set(0);
     rotateXVal.set(0);
     rotateYVal.set(0);
-  };
+  }, [mouseX, mouseY, rotateXVal, rotateYVal]);
 
   const spotlightBg = useTransform(
     [springX, springY],
@@ -71,11 +93,12 @@ export default function TiltSpotlightCard({
     <div style={{ perspective: 1200 }} className="w-full h-full">
       <motion.div
         ref={cardRef}
+        onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{
-          rotateX,
-          rotateY,
+          rotateX: canHover ? rotateX : 0,
+          rotateY: canHover ? rotateY : 0,
           transformStyle: "preserve-3d",
           background: spotlightBg,
         }}
@@ -95,7 +118,7 @@ export default function TiltSpotlightCard({
 
         <div
           className="relative z-10 h-full w-full"
-          style={{ transform: "translateZ(8px)" }}
+          style={{ transform: canHover ? "translateZ(8px)" : "none" }}
         >
           {children}
         </div>

@@ -99,7 +99,7 @@ const GridMotion = ({ items = [], gradientColor = 'black' }) => {
                 if (typeof content === 'string') {
                   return (
                     <div key={itemIndex} className="row__item">
-                      <div className="row__item-inner" style={{ backgroundColor: '#111' }}>
+                      <div className="row__item-inner" style={{ backgroundColor: 'var(--card)' }}>
                         <div className="row__item-content">{content}</div>
                       </div>
                     </div>

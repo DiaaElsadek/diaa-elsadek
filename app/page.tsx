@@ -1,14 +1,11 @@
 import Nav from "./_components/nav";
 import Hero from "./_components/hero";
 import DeveloperIdentity from "./_components/developer-identity";
+import ScrollRevealSection from "./_components/scroll-reveal-section";
 import SelectedWork from "./_components/selected-work";
-import EduCenterCaseStudy from "./_components/educenter-case-study";
-import UniStreamCaseStudy from "./_components/unistream-case-study";
-import SystemDesign from "./_components/system-design";
+import Experience from "./_components/experience";
 import TechEcosystem from "./_components/tech-ecosystem";
-import EngineeringPrinciples from "./_components/engineering-principles";
-import Vision from "./_components/vision";
-import Testimonials from "./_components/testimonials";
+import Credentials from "./_components/credentials";
 import Contact from "./_components/contact";
 import Footer from "./_components/footer";
 import ScrollToTop from "./_components/scroll-to-top";
@@ -20,15 +17,12 @@ export default function Home() {
       <main>
         <Hero />
         <DeveloperIdentity />
+        <ScrollRevealSection />
         <SelectedWork />
-        <EduCenterCaseStudy />
-        <UniStreamCaseStudy />
-        <SystemDesign />
+        <Experience />
         <TechEcosystem />
-        <EngineeringPrinciples />
-        <Vision />
+        <Credentials />
         <Contact />
-        <Testimonials />
       </main>
       <Footer />
       <ScrollToTop />

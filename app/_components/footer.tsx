@@ -1,112 +1,144 @@
-import { Mail, ArrowUpRight } from "lucide-react";
+"use client";
 
-function GithubIcon({ className, size }: { className?: string, size?: number }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A4.8 4.8 0 0 0 8 18v4"></path>
-    </svg>
-  );
-}
-
-function LinkedinIcon({ className, size }: { className?: string, size?: number }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-      <rect x="2" y="9" width="4" height="12"></rect>
-      <circle cx="4" cy="4" r="2"></circle>
-    </svg>
-  );
-}
-
-// function TwitterIcon({ className, size }: { className?: string, size?: number }) {
-//   return (
-//     <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-//       <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-//     </svg>
-//   );
-// }
+import { Mail, ArrowUpRight, ArrowUp, Sparkles, Terminal, Heart } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./social-icons";
+import { NAV_ITEMS, PROFILE } from "@/lib/data/profile";
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/diaaelsadek", icon: GithubIcon },
-  { label: "LinkedIn", href: "https://linkedin.com/in/diaaelsadek", icon: LinkedinIcon },
-  // { label: "Twitter", href: "https://twitter.com/diaaelsadek", icon: TwitterIcon },
-  { label: "Email", href: "mailto:diaaelsadek@icloud.com", icon: Mail },
+  { label: "GitHub", href: PROFILE.github, icon: GithubIcon },
+  { label: "LinkedIn", href: PROFILE.linkedin, icon: LinkedinIcon },
+  { label: "Email", href: `mailto:${PROFILE.email}`, icon: Mail },
 ];
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="border-t border-border bg-background pt-16 pb-8">
-      <div className="section-container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-16">
-          <div className="lg:col-span-2">
-            <span className="font-mono text-xl font-medium tracking-tight text-foreground block mb-4">
-              d.elsadek
-            </span>
-            <p className="text-sm text-muted-foreground max-w-sm leading-relaxed mb-6">
-              Full-Stack Software Engineer focused on building scalable,
-              high-performance web applications and SaaS products.
-            </p>
-            <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/60" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+    <footer className="border-t border-border bg-card/40 pt-16 pb-12 relative overflow-hidden">
+      <div className="section-container relative z-10">
+        
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
+          
+          {/* Brand & Bio (2 cols) */}
+          <div className="lg:col-span-2 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 border border-primary/20 font-mono text-xs font-bold text-primary">
+                DE
+              </div>
+              <span className="font-mono text-xl font-bold tracking-tight text-foreground">
+                diaa.elsadek
               </span>
-              Available for work
+            </div>
+
+            <p className="text-sm text-muted-foreground max-w-sm leading-relaxed">
+              Full-Stack Developer specializing in JavaScript/TypeScript and .NET (React, Next.js, ASP.NET Core). Architecting and shipping production SaaS, healthcare marketplaces, and booking platforms.
+            </p>
+
+            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-muted-foreground">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/80" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span>Available for high-impact contracts & full-time roles</span>
             </div>
           </div>
 
+          {/* Quick Nav (1 col) */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-foreground font-semibold mb-4">
               Navigation
             </h3>
-            <ul className="space-y-3">
-              {["Work", "Systems", "Stack", "Principles"].map((item) => (
-                <li key={item}>
+            <ul className="space-y-2.5">
+              {NAV_ITEMS.map((item) => (
+                <li key={item.label}>
                   <a
-                    href={`#${item.toLowerCase()}`}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    href={item.href}
+                    className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                   >
-                    {item}
+                    {item.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Connect (1 col) */}
           <div>
-            <h3 className="font-mono text-xs uppercase tracking-widest text-muted-foreground mb-4">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-foreground font-semibold mb-4">
               Connect
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {SOCIALS.map((social) => {
                 const Icon = social.icon;
                 return (
                   <li key={social.label}>
                     <a
                       href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      target={social.href.startsWith("http") ? "_blank" : undefined}
+                      rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                      className="group inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
                     >
-                      <Icon size={14} className="group-hover:text-foreground transition-colors" />
+                      <Icon size={14} className="text-muted-foreground group-hover:text-primary transition-colors" />
                       <span>{social.label}</span>
-                      <ArrowUpRight size={12} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300" />
+                      <ArrowUpRight
+                        size={12}
+                        className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-200"
+                      />
                     </a>
                   </li>
                 );
               })}
             </ul>
           </div>
+
+          {/* Status & Back to Top (1 col) */}
+          <div className="space-y-4">
+            <h3 className="font-mono text-xs uppercase tracking-widest text-foreground font-semibold mb-4">
+              Environment
+            </h3>
+
+            <div className="p-3 rounded-xl bg-secondary/50 border border-border/80 text-[11px] font-mono space-y-1.5 text-muted-foreground">
+              <div className="flex items-center justify-between">
+                <span>Next.js</span>
+                <span className="text-foreground font-semibold">16.2 (App Router)</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>React</span>
+                <span className="text-foreground font-semibold">19.2</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>Status</span>
+                <span className="text-emerald-500 font-semibold">Online (Edge)</span>
+              </div>
+            </div>
+
+            <button
+              onClick={scrollToTop}
+              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:bg-accent text-xs font-mono text-foreground transition-all duration-200 cursor-pointer"
+            >
+              <ArrowUp size={13} className="text-primary" />
+              <span>Back to Top</span>
+            </button>
+          </div>
+
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border/50">
-          <span className="font-mono text-xs text-muted-foreground">
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border/60 text-xs font-mono text-muted-foreground">
+          <span>
             © {new Date().getFullYear()} Diaa Elsadek. All rights reserved.
           </span>
-          <span className="text-xs text-muted-foreground flex items-center gap-1.5">
-            Crafted with intention in Egypt
+          <span className="flex items-center gap-1.5">
+            Crafted with intention &amp; code in Egypt
           </span>
         </div>
+
       </div>
     </footer>
   );

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll() {
   useEffect(() => {
@@ -13,6 +14,10 @@ export default function SmoothScroll() {
       smoothWheel: true,
       wheelMultiplier: 1.1,
       touchMultiplier: 1.5,
+    });
+
+    lenis.on("scroll", () => {
+      ScrollTrigger.update();
     });
 
     let animationFrameId: number;
