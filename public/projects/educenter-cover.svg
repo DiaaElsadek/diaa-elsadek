@@ -1,0 +1,118 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#070a14"/>
+      <stop offset="50%" stop-color="#0b1124"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="200" y1="100" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="0" y2="400" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#090d19" stop-opacity="0.95"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g opacity="0.08" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="75" x2="1200" y2="75"/>
+    <line x1="0" y1="150" x2="1200" y2="150"/>
+    <line x1="0" y1="225" x2="1200" y2="225"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="375" x2="1200" y2="375"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="150" y1="0" x2="150" y2="675"/>
+    <line x1="300" y1="0" x2="300" y2="675"/>
+    <line x1="450" y1="0" x2="450" y2="675"/>
+    <line x1="600" y1="0" x2="600" y2="675"/>
+    <line x1="750" y1="0" x2="750" y2="675"/>
+    <line x1="900" y1="0" x2="900" y2="675"/>
+    <line x1="1050" y1="0" x2="1050" y2="675"/>
+  </g>
+
+  <!-- Glowing Radial Accent -->
+  <circle cx="600" cy="200" r="350" fill="#2563eb" opacity="0.12" filter="blur(80px)"/>
+
+  <!-- UI Window Container -->
+  <rect x="120" y="80" width="960" height="515" rx="16" fill="url(#cardBg)" stroke="#1e293b" stroke-width="1.5"/>
+  
+  <!-- Window Header Bar -->
+  <path d="M120 96C120 87.1634 127.163 80 136 80H1064C1072.84 80 1080 87.1634 1080 96V125H120V96Z" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="150" cy="102" r="5" fill="#ef4444" opacity="0.8"/>
+  <circle cx="168" cy="102" r="5" fill="#f59e0b" opacity="0.8"/>
+  <circle cx="186" cy="102" r="5" fill="#10b981" opacity="0.8"/>
+  <rect x="420" y="92" width="360" height="22" rx="6" fill="#1e293b" opacity="0.6"/>
+  <text x="600" y="107" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle" font-weight="500">educenter.tech — Multi-Tenant Educational Portal</text>
+
+  <!-- Navigation Mock -->
+  <rect x="150" y="145" width="900" height="50" rx="10" fill="#0c1222" stroke="#1e293b" stroke-width="1"/>
+  <rect x="170" y="160" width="100" height="20" rx="4" fill="#3b82f6" opacity="0.2"/>
+  <text x="220" y="174" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">EduCenter</text>
+  <rect x="850" y="157" width="90" height="26" rx="6" fill="#3b82f6"/>
+  <text x="895" y="174" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">تسجيل الدخول</text>
+  <rect x="740" y="157" width="95" height="26" rx="6" fill="#1e293b"/>
+  <text x="787" y="174" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11" font-weight="500" text-anchor="middle">أنشئ أكاديميتك</text>
+
+  <!-- Hero Content Area -->
+  <text x="600" y="245" fill="#ffffff" font-family="system-ui, sans-serif" font-size="28" font-weight="800" text-anchor="middle" letter-spacing="-0.02em">أنشئ موقعك التعليمي في دقائق</text>
+  <text x="600" y="278" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14" text-anchor="middle">منصة تمكّن المعلمين من إدارة الكورسات، الامتحانات، ومتابعة الطلاب آلياً</text>
+
+  <!-- Feature Grid Mock inside window -->
+  <g transform="translate(150, 315)">
+    <!-- Card 1: Multi-Tenancy -->
+    <rect x="0" y="0" width="280" height="150" rx="10" fill="#0c1222" stroke="#1e293b" stroke-width="1"/>
+    <circle cx="36" cy="36" r="18" fill="#1e3a8a" opacity="0.5"/>
+    <text x="36" y="41" fill="#60a5fa" font-family="system-ui, sans-serif" font-size="14" font-weight="700" text-anchor="middle">M</text>
+    <text x="24" y="82" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Multi-Tenant Academies</text>
+    <text x="24" y="105" fill="#64748b" font-family="system-ui, sans-serif" font-size="12">Dedicated branded workspaces for each educator with isolated course catalogs.</text>
+    <rect x="24" y="125" width="75" height="16" rx="4" fill="#1e293b"/>
+    <text x="61" y="136" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Subdomain DNS</text>
+
+    <!-- Card 2: WhatsApp Automation -->
+    <rect x="310" y="0" width="280" height="150" rx="10" fill="#0c1222" stroke="#1e293b" stroke-width="1"/>
+    <circle cx="346" cy="36" r="18" fill="#065f46" opacity="0.5"/>
+    <text x="346" y="41" fill="#34d399" font-family="system-ui, sans-serif" font-size="14" font-weight="700" text-anchor="middle">W</text>
+    <text x="334" y="82" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="700">WhatsApp Automation</text>
+    <text x="334" y="105" fill="#64748b" font-family="system-ui, sans-serif" font-size="12">Instant automated notifications for attendance, grades, and session updates.</text>
+    <rect x="334" y="125" width="78" height="16" rx="4" fill="#1e293b"/>
+    <text x="373" y="136" fill="#34d399" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">95%+ Read Rate</text>
+
+    <!-- Card 3: Gradebook & Quizzes -->
+    <rect x="620" y="0" width="280" height="150" rx="10" fill="#0c1222" stroke="#1e293b" stroke-width="1"/>
+    <circle cx="656" cy="36" r="18" fill="#78350f" opacity="0.5"/>
+    <text x="656" y="41" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Q</text>
+    <text x="644" y="82" fill="#ffffff" font-family="system-ui, sans-serif" font-size="15" font-weight="700">Cohort Analytics</text>
+    <text x="644" y="105" fill="#64748b" font-family="system-ui, sans-serif" font-size="12">Online exam builder, automatic grading, and comprehensive performance metrics.</text>
+    <rect x="644" y="125" width="85" height="16" rx="4" fill="#1e293b"/>
+    <text x="686" y="136" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Real-Time Sync</text>
+  </g>
+
+  <!-- Bottom Badges -->
+  <g transform="translate(150, 500)">
+    <rect x="0" y="0" width="120" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="60" y="17" fill="#cbd5e1" font-family="monospace" font-size="11" text-anchor="middle">Next.js 15+ SSR</text>
+
+    <rect x="135" y="0" width="95" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="182" y="17" fill="#cbd5e1" font-family="monospace" font-size="11" text-anchor="middle">TypeScript</text>
+
+    <rect x="245" y="0" width="115" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="302" y="17" fill="#cbd5e1" font-family="monospace" font-size="11" text-anchor="middle">Tailwind CSS v4</text>
+
+    <rect x="375" y="0" width="125" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="437" y="17" fill="#cbd5e1" font-family="monospace" font-size="11" text-anchor="middle">Node.js Webhooks</text>
+
+    <rect x="515" y="0" width="135" height="26" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="582" y="17" fill="#cbd5e1" font-family="monospace" font-size="11" text-anchor="middle">RTL Arabic Engine</text>
+
+    <rect x="780" y="0" width="120" height="26" rx="6" fill="#047857" opacity="0.3" stroke="#10b981" stroke-width="1"/>
+    <circle cx="795" cy="13" r="3.5" fill="#10b981"/>
+    <text x="845" y="17" fill="#34d399" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Live Platform</text>
+  </g>
+</svg>

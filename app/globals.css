@@ -1,26 +1,173 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   DESIGN TOKENS — Technical Editorial Design System
+   ========================================================================== */
+
+/* Dark Mode is Primary / Default */
+:root,
+[data-theme="dark"] {
+  --bg-primary: #0e0f12;
+  --bg-secondary: #14161b;
+  --bg-tertiary: #1b1e24;
+  --surface-card: #13151a;
+  --surface-card-hover: #181b22;
+  --surface-elevated: #1e222a;
+  --code-bg: #161920;
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --text-muted: #4b5563;
+
+  --border: #232730;
+  --border-hover: #323846;
+  --border-subtle: #1c2027;
+
+  /* Warm Technical Amber/Gold Accent */
+  --accent: #f59e0b;
+  --accent-hover: #fbbf24;
+  --accent-muted: rgba(245, 158, 11, 0.12);
+  --accent-border: rgba(245, 158, 11, 0.28);
+  --accent-contrast: #0f1015;
+
+  /* Badges */
+  --badge-bg: #1a1d24;
+  --badge-text: #d1d5db;
+  --badge-border: #282d38;
+
+  /* Focus ring */
+  --ring: #f59e0b;
+  --color-scheme: dark;
+}
+
+/* Light Mode */
+[data-theme="light"] {
+  --bg-primary: #fcfcfd;
+  --bg-secondary: #f4f5f7;
+  --bg-tertiary: #eaecf0;
+  --surface-card: #ffffff;
+  --surface-card-hover: #f9fafb;
+  --surface-elevated: #ffffff;
+  --code-bg: #f3f4f6;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-muted: #9ca3af;
+
+  --border: #e5e7eb;
+  --border-hover: #d1d5db;
+  --border-subtle: #f3f4f6;
+
+  /* Refined Deep Amber for Light Mode */
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  --accent-muted: rgba(217, 119, 6, 0.08);
+  --accent-border: rgba(217, 119, 6, 0.25);
+  --accent-contrast: #ffffff;
+
+  /* Badges */
+  --badge-bg: #f3f4f6;
+  --badge-text: #374151;
+  --badge-border: #e5e7eb;
+
+  /* Focus ring */
+  --ring: #d97706;
+  --color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+html {
+  color-scheme: var(--color-scheme);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-muted);
+  color: var(--accent);
+}
+
+/* Subtle editorial grid pattern for technical credibility */
+.editorial-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
+}
+
+/* Typography Fluid Scale */
+.text-display {
+  font-size: clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.text-heading-1 {
+  font-size: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.text-heading-2 {
+  font-size: clamp(1.35rem, 1.2rem + 0.8vw, 1.85rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.text-heading-3 {
+  font-size: clamp(1.1rem, 1.05rem + 0.3vw, 1.3rem);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Media query for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

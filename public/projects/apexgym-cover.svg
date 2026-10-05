@@ -1,0 +1,40 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aBg" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#140a08"/>
+      <stop offset="100%" stop-color="#1f100a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#aBg)"/>
+  <circle cx="400" cy="150" r="220" fill="#f97316" opacity="0.12" filter="blur(60px)"/>
+  
+  <rect x="60" y="50" width="680" height="350" rx="12" fill="#1c1310" stroke="#3d2116" stroke-width="1.5"/>
+  <path d="M60 62C60 55.3726 65.3726 50 72 50H728C734.627 50 740 55.3726 740 62V80H60V62Z" fill="#281711"/>
+  <circle cx="80" cy="65" r="4" fill="#ef4444" opacity="0.7"/>
+  <circle cx="95" cy="65" r="4" fill="#f59e0b" opacity="0.7"/>
+  <circle cx="110" cy="65" r="4" fill="#10b981" opacity="0.7"/>
+  <text x="400" y="70" fill="#fdba74" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">apex-gym-sandy.vercel.app — Commercial Client Project</text>
+
+  <!-- Content -->
+  <text x="400" y="145" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="900" text-anchor="middle" letter-spacing="0.05em">APEX GYM</text>
+  <text x="400" y="172" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Commercial client web platform engineered for a local fitness business</text>
+
+  <!-- Highlight Box -->
+  <g transform="translate(140, 205)">
+    <rect x="0" y="0" width="520" height="105" rx="8" fill="#241510" stroke="#4a2517"/>
+    <text x="30" y="36" fill="#fb923c" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Commercial Client Delivery</text>
+    <text x="30" y="60" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="12">Direct freelance engagement with business owners to build and deploy their membership marketing and facility showcase platform.</text>
+    <rect x="30" y="75" width="110" height="18" rx="4" fill="#3a1c12"/>
+    <text x="85" y="87" fill="#fdba74" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">Client Freelance</text>
+  </g>
+
+  <!-- Tags -->
+  <g transform="translate(140, 340)">
+    <rect x="0" y="0" width="75" height="22" rx="4" fill="#361a11"/>
+    <text x="37" y="15" fill="#fdba74" font-family="monospace" font-size="10" text-anchor="middle">React</text>
+    <rect x="85" y="0" width="65" height="22" rx="4" fill="#361a11"/>
+    <text x="117" y="15" fill="#fdba74" font-family="monospace" font-size="10" text-anchor="middle">Vite</text>
+    <rect x="160" y="0" width="105" height="22" rx="4" fill="#361a11"/>
+    <text x="212" y="15" fill="#fdba74" font-family="monospace" font-size="10" text-anchor="middle">Tailwind CSS</text>
+  </g>
+</svg>
