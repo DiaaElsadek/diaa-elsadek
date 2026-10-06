@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
-import { Star, MessageSquareQuote, CheckCircle2, Grid, Layers, Sparkles } from "lucide-react";
-import SectionHeader from "./section-header";
+import { Grid, Layers, Sparkles } from "lucide-react";
+import { REVIEWS, Review } from "@/lib/data/reviews";
+import LogoLoop from "@/components/LogoLoop";
+import ReviewCard from "./review-card";
 
 const GridMotion = dynamic(() => import("@/components/GridMotion"), {
   ssr: false,
@@ -15,39 +17,48 @@ const GridMotion = dynamic(() => import("@/components/GridMotion"), {
   ),
 });
 
-interface Review {
-  id: string;
-  name: string;
-  role: string;
-  company: string;
-  avatar: string;
-  rating: number;
-  review: string;
-}
-
 export default function Testimonials() {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [viewMode, setViewMode] = useState<"grid" | "cinematic">("grid");
+  const [reviews, setReviews] = useState<Review[]>(REVIEWS);
+  const [isLoading, setIsLoading] = useState(false);
+  const [viewMode, setViewMode] = useState<"loop" | "grid" | "cinematic">("loop");
 
   useEffect(() => {
     async function fetchReviews() {
       try {
         const res = await fetch("/api/reviews");
-        if (!res.ok) throw new Error("Failed to fetch reviews");
-        const data = await res.json();
-        setReviews(data);
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            setReviews(data);
+          }
+        }
       } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
+        console.warn("Using offline review data", error);
       }
     }
     fetchReviews();
   }, []);
 
+  const loopRow1 = useMemo(
+    () =>
+      reviews.slice(0, 3).map((rev) => ({
+        node: <ReviewCard review={rev} variant="marquee" />,
+        ariaLabel: `${rev.name} peer endorsement`,
+      })),
+    [reviews]
+  );
+
+  const loopRow2 = useMemo(
+    () =>
+      reviews.slice(3, 6).map((rev) => ({
+        node: <ReviewCard review={rev} variant="marquee" />,
+        ariaLabel: `${rev.name} peer endorsement`,
+      })),
+    [reviews]
+  );
+
   return (
-    <section id="testimonials" className="relative border-t border-border bg-background overflow-hidden py-24">
+    <section id="testimonials" className="relative border-t border-border bg-background overflow-hidden py-24 scroll-mt-16">
       {/* Ambient background glow */}
       <div
         className="absolute inset-0 pointer-events-none z-0 opacity-10 dark:opacity-20 mix-blend-screen"
@@ -60,13 +71,13 @@ export default function Testimonials() {
       <div className="section-container relative z-10">
         
         {/* Header with View Mode Switcher */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <span className="block font-mono text-xs text-muted-foreground tracking-widest uppercase mb-3">
               07
             </span>
             <h2 className="text-3xl sm:text-5xl font-medium tracking-tight text-foreground">
-              Peer & Engineering Feedback
+              Peer &amp; Engineering Feedback
             </h2>
             <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-xl">
               Endorsements from fellow software engineers, senior collaborators, and project leads.
@@ -75,6 +86,18 @@ export default function Testimonials() {
 
           {/* View Mode Switcher */}
           <div className="flex items-center gap-1.5 p-1 rounded-xl bg-secondary border border-border shrink-0">
+            <button
+              onClick={() => setViewMode("loop")}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg transition-all ${
+                viewMode === "loop"
+                  ? "bg-background text-foreground font-semibold shadow-xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Sparkles size={13} className={viewMode === "loop" ? "text-primary" : ""} />
+              <span>Infinite Stream</span>
+            </button>
+
             <button
               onClick={() => setViewMode("grid")}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg transition-all ${
@@ -108,7 +131,41 @@ export default function Testimonials() {
           </div>
         ) : (
           <AnimatePresence mode="wait">
-            {viewMode === "grid" ? (
+            {viewMode === "loop" && (
+              /* Continuous Animated LogoLoop Showcase */
+              <motion.div
+                key="loop"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col gap-4 sm:gap-5 overflow-hidden py-2"
+              >
+                <LogoLoop
+                  logos={loopRow1}
+                  speed={35}
+                  direction="left"
+                  gap={20}
+                  pauseOnHover={true}
+                  fadeOut={true}
+                  fadeOutColor="var(--background)"
+                  ariaLabel="Peer endorsements stream 1"
+                />
+
+                <LogoLoop
+                  logos={loopRow2}
+                  speed={30}
+                  direction="right"
+                  gap={20}
+                  pauseOnHover={true}
+                  fadeOut={true}
+                  fadeOutColor="var(--background)"
+                  ariaLabel="Peer endorsements stream 2"
+                />
+              </motion.div>
+            )}
+
+            {viewMode === "grid" && (
               /* Curated Responsive Grid */
               <motion.div
                 key="grid"
@@ -119,67 +176,12 @@ export default function Testimonials() {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
               >
                 {reviews.map((rev) => (
-                  <div
-                    key={rev.id}
-                    className="group rounded-2xl border border-border bg-card p-6 flex flex-col justify-between shadow-sm hover:border-primary/40 hover:shadow-lg transition-all duration-300 relative overflow-hidden"
-                  >
-                    <div>
-                      {/* Top Header with Avatar & Identity */}
-                      <div className="flex items-start justify-between gap-3 mb-4">
-                        <div className="flex items-center gap-3">
-                          <img
-                            src={rev.avatar}
-                            alt={rev.name}
-                            className="w-11 h-11 rounded-full border border-border shrink-0 bg-secondary"
-                            loading="lazy"
-                          />
-                          <div>
-                            <h3 className="text-sm font-semibold text-foreground">
-                              {rev.name}
-                            </h3>
-                            <p className="text-[11px] text-muted-foreground font-mono">
-                              {rev.role}
-                              {rev.company ? ` • ${rev.company}` : ""}
-                            </p>
-                          </div>
-                        </div>
-
-                        <span className="inline-flex items-center gap-1 text-[10px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full shrink-0">
-                          <CheckCircle2 size={10} />
-                          <span>Verified</span>
-                        </span>
-                      </div>
-
-                      {/* Review Quote */}
-                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed italic mb-6">
-                        "{rev.review}"
-                      </p>
-                    </div>
-
-                    {/* Bottom Star Rating */}
-                    <div className="pt-4 border-t border-border/50 flex items-center justify-between">
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            size={14}
-                            className={
-                              i < rev.rating
-                                ? "text-amber-400 fill-amber-400"
-                                : "text-muted-foreground/30"
-                            }
-                          />
-                        ))}
-                      </div>
-
-                      <span className="text-[10px] font-mono text-muted-foreground">
-                        {rev.rating}.0 / 5.0
-                      </span>
-                    </div>
-                  </div>
+                  <ReviewCard key={rev.id} review={rev} variant="grid" />
                 ))}
               </motion.div>
-            ) : (
+            )}
+
+            {viewMode === "cinematic" && (
               /* Cinematic 3D Perspective Wall */
               <motion.div
                 key="cinematic"

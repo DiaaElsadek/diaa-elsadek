@@ -2,12 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Star } from 'lucide-react';
 import './GridMotion.css';
-import './GridMotion.css';
 
 const GridMotion = ({ items = [], gradientColor = 'black' }) => {
   const gridRef = useRef(null);
   const rowRefs = useRef([]);
-  const mouseXRef = useRef(window.innerWidth / 2);
+  const mouseXRef = useRef(typeof window !== 'undefined' ? window.innerWidth / 2 : 500);
 
   const totalItems = 28;
   const defaultItems = Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);

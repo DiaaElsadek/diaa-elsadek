@@ -6,6 +6,7 @@ import SelectedWork from "./_components/selected-work";
 import Experience from "./_components/experience";
 import TechEcosystem from "./_components/tech-ecosystem";
 import Credentials from "./_components/credentials";
+import Testimonials from "./_components/testimonials";
 import Contact from "./_components/contact";
 import Footer from "./_components/footer";
 import ScrollToTop from "./_components/scroll-to-top";
@@ -22,6 +23,7 @@ export default function Home() {
         <Experience />
         <TechEcosystem />
         <Credentials />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />
